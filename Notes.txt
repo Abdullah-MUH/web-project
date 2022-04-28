@@ -1,0 +1,8 @@
+to connect to the database creat a user with this information
+'localhost', 'project', '1234', 'cinema'
+then creat a database with the name 'cinema'
+then export the cinema.sql file
+
+!!! important note
+in the config.php file there is this url http://localhost:8012/cinema/cinema-WEB/ if your XAMPP run in the defult
+ port erase :8012 in the url, if you run XAMPP in another port write the port number instead of 8012.

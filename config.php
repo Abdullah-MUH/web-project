@@ -7,4 +7,4 @@
         // Connection Failed
         echo 'Failed to connect to MySQL '. mysqli_connect_errno();
     }
-?>
+define('ROOT_URL', 'http://localhost:8012/cinema/cinema-WEB/');

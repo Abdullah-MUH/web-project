@@ -1,6 +1,5 @@
 <?php require('./config.php');
 $query = 'SELECT * FROM movies';
-define('ROOT_URL', 'http://localhost:8012/cinema/cinema-WEB/');
 //get result 
 $result = mysqli_query($conn, $query);
 $movies = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -228,7 +227,7 @@ mysqli_close($conn); ?>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <!-- Link To Custom JS -->
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 

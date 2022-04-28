@@ -36,4 +36,11 @@ top: 85px;
     color: var(--main-color);
     background-color: white;
 }
-/* <img src="<?php echo $movie['movie_image']; ?>"> */
+/* .bto {
+    height: 50px;
+    width: 50px;
+    background-color: purple;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+} */
