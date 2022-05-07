@@ -1,14 +1,19 @@
 <?php
 include('nav.php');
 require('config.php');
+// Seats query
 $query = "SELECT * FROM seats";
 $result = mysqli_query($conn, $query);
 $seats = mysqli_fetch_all($result, MYSQLI_ASSOC);
+//  Get clicked movie query
 $id = $_GET['movie_id'];
 $query2 = "SELECT * FROM movies WHERE movie_id=" . $id;
 $result2 = mysqli_query($conn, $query2);
 $movie = mysqli_fetch_array($result2, MYSQLI_ASSOC);
-// var_dump($seats);
+//  Get booked seats query
+$query3 = "SELECT * FROM bookings WHERE movie_id=" . $id;
+$result3 = mysqli_query($conn, $query3);
+$bookings = mysqli_fetch_all($result3, MYSQLI_ASSOC);
 ?>
 
 
@@ -26,15 +31,24 @@ $movie = mysqli_fetch_array($result2, MYSQLI_ASSOC);
         <form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
             <div class="screen"></div>
             <?php $counter = 0; ?>
-
             <?php foreach ($seats as $seat) : ?>
             <?php if ($counter % 4 == 0) :
                     echo $counter > 0 ? "</div>" : "";
                     echo "<div class='col'>";
                 endif; ?>
 
-            <input type="checkbox" data-seat="<?php echo  $seat['seat_name']; ?> " class="chk" name="seat_name"
-                value="<?php echo  $seat['seat_name']; ?>">
+            <input type="checkbox" id="ss" data-seat="<?php echo  $seat['seat_name']; ?> " class="<?php
+                $sflag = 'chk';
+                foreach ($bookings as $booking) :
+                    $split_seat_name = explode(",", $booking["seat_name"]);
+                    foreach ($split_seat_name as $s_booking) :
+                        if ($seat['seat_name'] == $s_booking) :
+                            $sflag = "unavailable";
+                            break 2;
+                        endif;
+                    endforeach;
+                endforeach;
+                echo $sflag; ?>" name="seat_name" value="<?php echo  $seat['seat_name']; ?>">
             <?php $counter++;
             endforeach; ?>
     </div>
@@ -54,20 +68,21 @@ $movie = mysqli_fetch_array($result2, MYSQLI_ASSOC);
     </div>
     <input type="submit" name="submit" value="submit" class="btn">
     </form>
+
     <?php
-
-
-
 
     // Check for submit
     if (isset($_POST['submit'])) {
         // Get form data
+        $movie_id = $movie['movie_id'];
+        $movie_name = $movie['movie_name'];
         $number_of_seats = mysqli_real_escape_string($conn, $_POST['number_of_seats']);
         $seat_name = mysqli_real_escape_string($conn, $_POST['seat_name']);
         $total_price = mysqli_real_escape_string($conn, $_POST['total_price']);
         // creat post query
-        $post_query = "INSERT INTO bookings(number_of_seats, seat_name, total_price) VALUES('$number_of_seats',
-'$seat_name', '$total_price')";
+        $post_query = "INSERT INTO bookings(movie_id, movie_name, number_of_seats, seat_name, total_price)
+    VALUES('$movie_id', '$movie_name', '$number_of_seats',
+    '$seat_name', '$total_price')";
         if (mysqli_query($conn, $post_query)) {
             header('Location: ' . ROOT_URL . '');
         } else {
@@ -75,12 +90,6 @@ $movie = mysqli_fetch_array($result2, MYSQLI_ASSOC);
         }
     }
     ?>
-
-
-
-
-
-
 
     <script src="js/seats.js"></script>
 </body>

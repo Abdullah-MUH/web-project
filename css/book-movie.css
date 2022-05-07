@@ -1,7 +1,6 @@
 .movie-container {
 width: 1080px;
 height: 700px;
-border: red 5px solid;
 position: relative;
 left: 70px;
 top: 85px;
@@ -10,7 +9,6 @@ top: 85px;
 .movie-image {
     height: 100%;
     width: 50%;
-    border: blue 3px solid;
 }
 .movie-image img {
     width: 100%;
@@ -19,7 +17,6 @@ top: 85px;
 .movie-details {
     height: 30%;
     width: 50%;
-    border: green 4px solid;
     position: absolute;
     right: 0;
     top: 0;
@@ -27,7 +24,6 @@ top: 85px;
 .booking-container {
     height: 70%;
     width: 50%;
-    border: yellow 4px solid;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -36,11 +32,3 @@ top: 85px;
     color: var(--main-color);
     background-color: white;
 }
-/* .bto {
-    height: 50px;
-    width: 50px;
-    background-color: purple;
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-} */

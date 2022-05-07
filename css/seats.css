@@ -41,3 +41,22 @@
 }.chk:checked {
     background-color: blueviolet;
 }
+.unavailable {
+    appearance: none;
+    height: 35px;
+    width: 35px;
+    border-radius: 3px;
+    background-color: grey;
+    margin: 20px;
+    cursor: pointer;
+    position: relative;
+}
+.unavailable::after {
+    content: attr(data-seat);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -10px;
+    margin-left: -8px;
+    color: black;
+}
