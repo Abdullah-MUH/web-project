@@ -56,13 +56,14 @@ $bookings = mysqli_fetch_all($result3, MYSQLI_ASSOC);
         <p>The movie you want to book: <?php echo $movie['movie_name']; ?> and the price of the ticket is: <span
                 class="movie-price"><?php echo $movie['movie_price']; ?></span></p>
 
-        <p>Number of seats selected: <input type="text" name="number_of_seats" value="" class=" num"></input>
+        <p>Number of seats selected: <input readonly type="text" name="number_of_seats" value="" class=" num"></input>
         </p>
 
-        <p>The seats you selected are: <input type="text" name="seat_name" value="" class="ShowSelectedSeats"></input>
+        <p>The seats you selected are: <input readonly type="text" name="seat_name" value=""
+                class="ShowSelectedSeats"></input>
         </p>
 
-        <p>Your total is: <input type="text" name="total_price" value="" class="total"></input>
+        <p>Your total is: <input readonly type="text" name="total_price" value="" class="total"></input>
         </p>
 
     </div>
