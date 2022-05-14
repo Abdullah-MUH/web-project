@@ -185,24 +185,23 @@ mysqli_close($conn); ?>
     </section>
 
     <!-- Film Search -->
-    <section class="newsletter" id="film-search">
-        <h2>Search for a film</h2>
-        <div class="container">
-            <form action="">
-                <input type="search" name="search" placeholder="Search for a film..." required>
-                <input type="submit" name="submit" value="Search" class="btn">
-            </form>
-        </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter" id="newsletter">
-        <h2>Subscribe To Get Newsletter</h2>
+<section class="newsletter" id="film-search">
+    <h2>Search for a film</h2>
+    <div class="container">
         <form action="">
-            <input type="email" class="email" placeholder=" Enter Email..." required>
-            <input type="submit" value="Subscribe" class="btn">
+            <input type="search" name="search"  minlength="3" maxlength="30" placeholder="Search for a film..."  required>
+            <input type="submit" name="submit" value="Search" class="btn">
         </form>
-    </section>
+    </div>
+</section>
+<!-- Newsletter -->
+<section class="newsletter" id="newsletter">
+    <h2>Subscribe To Get Newsletter</h2>
+    <form action="">
+        <input type="text" class="email" minlength="8" maxlength="30" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="You have to enter valid email example@mail.com"  placeholder=" Enter Email..." required>
+        <input type="submit" value="Subscribe" class="btn">
+    </form>
+</section>
 
     <!-- footer (Starts) -->
     <section class="footer">
