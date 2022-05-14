@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+phpMyAdmin SQL Dump
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
@@ -21,18 +21,6 @@ SET time_zone = "+00:00";
 -- Database: `cinema`
 --
 
--- --------------------------------------------------------
-
---
--- Table structure for table `bookings`
---
-
-CREATE TABLE `bookings` (
-  `booking_id` int(11) NOT NULL,
-  `number_of_seats` int(11) NOT NULL,
-  `seat_name` varchar(50) NOT NULL,
-  `total_price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -61,6 +49,20 @@ INSERT INTO `movies` (`movie_id`, `movie_name`, `movie_desc`, `movie_image`, `mo
 (4, '2001: A Space Odyssey', 'The Monoliths push humanity to reach for the stars; after their discovery in Africa generations ago, the mysterious objects lead mankind on an awesome journey to Jupiter, with the help of H.A.L. 9000: the world\'s greatest supercomputer.', 'images/2001.png', 40, '15 September', '5:00 PM'),
 (5, 'Barry Lyndon', 'An Irish rogue wins the heart of a rich widow and assumes her dead husband\'s aristocratic position in 18th-century England.', 'images/barrylyndon.png', 25, '2 May', '1:00 PM'),
 (6, 'Seven Samurai', 'A poor village under attack by bandits recruits seven unemployed samurai to help them defend themselves.', 'images/7samurai.png', 30, '7 May', '9:00 PM');
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookings`
+--
+
+CREATE TABLE `bookings` (
+  `booking_id` int(11) NOT NULL,
+  `number_of_seats` int(11) NOT NULL,
+  `seat_name` varchar(50) NOT NULL,
+  `total_price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -92,15 +94,36 @@ INSERT INTO `seats` (`seat_id`, `seat_name`, `seat_status`) VALUES
 (11, 'C3', 'available'),
 (12, 'C4', 'available');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `UserId` int(11) NOT NULL,
+  `UserName` varchar(128) NOT NULL,
+  `UserEmail` varchar(128) NOT NULL,
+  `UserUid` varchar(128) NOT NULL,
+  `UserPwd` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`UserId`, `UserName`, `UserEmail`, `UserUid`, `UserPwd`) VALUES
+(1, 'Musallam', 'musallem@gmail.com', 'musallem', '$2y$10$z4bQSt08T4qy/XbwfHwW6.17.uB2.8BcNSUkkLOTIgw5ICodTlKSG');
+
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `bookings`
+-- Indexes for table `users`
 --
-ALTER TABLE `bookings`
-  ADD PRIMARY KEY (`booking_id`);
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`UserId`);
 
 --
 -- Indexes for table `movies`
@@ -108,6 +131,14 @@ ALTER TABLE `bookings`
 ALTER TABLE `movies`
   ADD PRIMARY KEY (`movie_id`);
 
+--
+-- Indexes for table `bookings`
+--
+ALTER TABLE `bookings`
+  ADD PRIMARY KEY (`booking_id`);
+
+--ALTER TABLE `bookings`
+  --FOREIGN KEY (`movie_id`) REFERENCES movies(`movie_id`);
 --
 -- Indexes for table `seats`
 --
@@ -122,7 +153,7 @@ ALTER TABLE `seats`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `movies`
@@ -135,6 +166,13 @@ ALTER TABLE `movies`
 --
 ALTER TABLE `seats`
   MODIFY `seat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
