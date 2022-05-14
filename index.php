@@ -7,7 +7,12 @@ $movies = mysqli_fetch_all($result, MYSQLI_ASSOC);
 // free result (free it from memory)
 mysqli_free_result($result);
 //close connection
-mysqli_close($conn); ?>
+mysqli_close($conn); 
+session_start();
+            if (isset($_SESSION["useruid"])) {
+                echo "Hello, ".$_SESSION["useruid"]."";
+            }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +48,14 @@ mysqli_close($conn); ?>
             <li><a href="#film-search">Search</a></li>
             <li><a href="#newsletter">Newsletter</a></li>
         </ul>
-        <a href="#" class="btn">Sign In</a>
+        <?php
+            if (isset($_SESSION["useruid"])) {
+                echo "<a href='inc/logout-inc.php' class='btn'>Log out</a>";
+            }
+            else {
+                echo "<a href='login.php' class='btn'>Sign In</a>";
+            }
+        ?>
     </header>
     <!-- Navigation Bar (Ends) -->
 
