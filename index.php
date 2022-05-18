@@ -233,7 +233,7 @@ session_start();
         </div>
     </section>
     <div class="copyright">
-        <p>&#169; All rights reserved. Designed by Group 3.</p>
+        <p>&#169; All rights reserved. Designed by Group 1.</p>
     </div>
     </section>
     <!-- footer (Ends) -->
