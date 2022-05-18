@@ -1,6 +1,6 @@
 <?php require('./config.php');
 $query = 'SELECT * FROM movies';
-//get result 
+// get results
 $result = mysqli_query($conn, $query);
 $movies = mysqli_fetch_all($result, MYSQLI_ASSOC);
 // var_dump($posts);
@@ -35,14 +35,14 @@ session_start();
 <body>
     <!-- Navigation Bar (Starts) -->
     <header>
-        <a href="#" class="logo">
+        <a href="./index.php" class="logo">
             <i class='bx bxs-movie'></i> Movies
         </a>
         <div class="bx bx-menu" id="menu-icon"></div>
 
         <!-- Menu -->
         <ul class="navbar">
-            <li><a href="#home" class="home-active">Home</a></li>
+            <li><a href="./index.php" class="home-active">Home</a></li>
             <li><a href="#movies">Movies</a></li>
             <li><a href="#coming">Coming Soon</a></li>
             <li><a href="#film-search">Search</a></li>
@@ -53,7 +53,15 @@ session_start();
                 echo "<a href='inc/logout-inc.php' class='btn'>Log out</a>";
             }
             else {
-                echo "<a href='login.php' class='btn'>Sign In</a>";
+                echo "<a href='login.php' class='btn'>Sign In / Sign Up</a>";
+            }
+        ?>
+                <?php
+            if (isset($_SESSION["useruid"])) {
+                echo "<a href='profile.php' class='btn'>Profile</a>";
+            }
+            else {
+                echo "";
             }
         ?>
     </header>
@@ -100,9 +108,6 @@ session_start();
             <?php endforeach ?>
         </div>
     </section>
-
-
-
 
 
     <!-- Coming soon -->
